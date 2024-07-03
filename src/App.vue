@@ -11,6 +11,7 @@
       <p>Tab ID not found</p>
     </div>
     <div v-else>
+      <h2>Tab ID: {{ id }}</h2>
       <div v-if="peopleStore.data">
         <Item :data="peopleStore.data" />
       </div>

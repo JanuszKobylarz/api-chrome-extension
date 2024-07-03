@@ -7,6 +7,9 @@ const getCurrentTab = async () => {
 const getCurrentTabId = async () => {
   const currentTab = await getCurrentTab();
   if (currentTab) {
+    if(currentTab.url == undefined || !currentTab.url.includes('?')) {
+      return null;
+    }
     const urlParams = new URLSearchParams(currentTab.url.split("?")[1]);
     const id = urlParams.get('id');
     return id;
