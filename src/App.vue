@@ -7,20 +7,20 @@
     <div v-if="peopleStore.error" class="text-center">
       <strong>{{ peopleStore.error }}</strong>
     </div>
-    <pre>
-      {{ peopleStore.data }}
-    </pre>
-
     <div v-if="!id">
       <p>Tab ID not found</p>
     </div>
     <div v-else>
+      <div v-if="peopleStore.data">
+        <Item :data="peopleStore.data" />
+      </div>
       <button @click="fetchParams">Fetch Params</button>
     </div>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
+import Item from "@/components/Item.vue";
 
 import { usePeopleStore } from "@/stores/people";
 import { getCurrentTabId } from "@/stores/tab";
