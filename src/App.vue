@@ -23,7 +23,12 @@
 import { ref } from "vue";
 
 import { usePeopleStore } from "@/stores/people";
-const id = ref(1);
+import { getCurrentTabId } from "@/stores/tab";
+
+const id = ref(null);
+getCurrentTabId().then((tabId) => {
+  id.value = tabId;
+});
 
 const peopleStore = usePeopleStore();
 

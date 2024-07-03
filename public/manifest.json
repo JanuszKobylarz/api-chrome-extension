@@ -7,7 +7,7 @@
     "https://swapi.dev/*"
   ],
   "permissions": [
-    "tabs",
+    "activeTab",
     "storage"
   ],
   "action": {
