@@ -1,4 +1,4 @@
-const GOOGLE_ORIGIN = 'https://www.wp.pl';
+const SITE_ORIGIN = 'https://www.wp.pl';
 
 // Allows users to open the side panel by clicking on the action toolbar icon
 chrome.sidePanel
@@ -7,9 +7,10 @@ chrome.sidePanel
 
 chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
   if (!tab.url) return;
+  console.log(info);
   const url = new URL(tab.url);
   // Enables the side panel on google.com
-  if (url.origin === GOOGLE_ORIGIN) {
+  if (url.origin === SITE_ORIGIN) {
     await chrome.sidePanel.setOptions({
       tabId,
       path: 'index.html',

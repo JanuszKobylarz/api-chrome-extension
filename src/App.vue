@@ -27,16 +27,19 @@ import { usePeopleStore } from "@/stores/people";
 import { getCurrentTabId } from "@/stores/tab";
 
 const id = ref(null);
+
+const peopleStore = usePeopleStore();
+
 getCurrentTabId().then((tabId) => {
   id.value = tabId;
 });
 
-const peopleStore = usePeopleStore();
-
 const fetchParams = () => {
-  if (id.value === null) {
-    return;
-  }
-  peopleStore.fetchPerson(id.value);
+  getCurrentTabId().then((tabId) => {
+    if (tabId !== null) {
+      id.value = tabId;
+      peopleStore.fetchPerson(id.value);
+    }
+  });
 };
 </script>

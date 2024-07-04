@@ -5,6 +5,7 @@ const getCurrentTab = async () => {
 };
 
 const getCurrentTabId = async () => {
+
   const currentTab = await getCurrentTab();
   if (currentTab) {
     if(currentTab.url == undefined || !currentTab.url.includes('?')) {
@@ -15,6 +16,8 @@ const getCurrentTabId = async () => {
     return id;
   }
 };
+
+
 
 export {
   getCurrentTabId
